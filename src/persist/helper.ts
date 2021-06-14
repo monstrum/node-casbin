@@ -1,5 +1,4 @@
 import { Model } from '../model';
-import * as parse from 'csv-parse/lib/sync';
 
 export class Helper {
   public static loadPolicyLine(line: string, model: Model): void {
@@ -7,11 +6,9 @@ export class Helper {
       return;
     }
 
-    const tokens = parse(line, {
-      delimiter: ',',
-      skip_empty_lines: true,
-      trim: true,
-    });
+    const lines: Array<string> = line.split('\n');
+    let tokens = lines.map((token) => token.split(','));
+    tokens = tokens.map((tokenList: string[]) => tokenList.map((token: string) => token.trim().replace(/"([^"]+(?="))"/g, '$1')));
 
     if (!tokens || !tokens[0]) {
       return;
