@@ -1,5 +1,5 @@
 {
-  "name": "casbin",
+  "name": "@monstrum/casbin",
   "version": "5.7.1",
   "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in Node.JS",
   "main": "lib/cjs/index.js",
